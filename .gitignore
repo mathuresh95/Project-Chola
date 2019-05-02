@@ -1,11 +1,8 @@
 Binaries/
 Intermediate/
 Saved/
-VRGame/VRGame.sln
-VRGame/.vs/VRGame/v15/.suo
-VRGame/.vs/VRGame/v15/Solution.VC.db-wal
-VRGame/.vs/VRGame/v15/Solution.VC.db-shm
-VRGame/.vs/VRGame/v15/Browse.VC.db
-VRGame/.vs/VRGame/v15/Solution.VC.db
-VRGame/.vs/VRGame/v15/Browse.VC.opendb
-VRGame/.vs/VRGame/v15/ipch/AutoPCH/5b8b07150c36980/VRCHARACTER.ipch
+Cholas/.vs/Cholas/v15/Browse.VC.db
+Cholas/.vs/Cholas/v15/.suo
+Cholas/.vs/Cholas/v15/ipch/AutoPCH/c0840dac948520be/VRCHARACTER.ipch
+Cholas/Cholas.sln
+Cholas/.vs/Cholas/v15/Browse.VC.opendb
