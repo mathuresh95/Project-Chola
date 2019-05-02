@@ -36,5 +36,18 @@ void AVRCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	PlayerInputComponent->BindAxis(TEXT("Forward"), this, &AVRCharacter::MoveForward);
+	PlayerInputComponent->BindAxis(TEXT("Right"), this, &AVRCharacter::MoveRight);
+
+}
+
+void AVRCharacter::MoveForward(float Throttle)
+{
+	AddMovementInput(Camera->GetForwardVector()*Throttle);
+}
+
+void AVRCharacter::MoveRight(float Throttle)
+{
+	AddMovementInput(Camera->GetRightVector()*Throttle);
 }
 
