@@ -27,13 +27,30 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
-	UPROPERTY(EditAnywhere, Category = Setup)
+	UPROPERTY(VisibleAnywhere, Category = Setup)
 	class UCameraComponent* Camera;
-	USceneComponent* VRRoot;
+	UPROPERTY(VisibleAnywhere, Category = Setup)
+	class USceneComponent* VRRoot;
+	UPROPERTY(VisibleAnywhere, Category = Setup)
+	class UStaticMeshComponent* DestinationMarker;
+	UPROPERTY(EditAnywhere, Category = Setup)
+	class USkeletalMeshComponent* CharacterMesh;
+
+	UPROPERTY(EditAnywhere,Category = Setup)
+	float TeleportRange = 1000.0f;
+	UPROPERTY(EditAnywhere, Category = Setup)
+		float TeleportFadeTime = 1.0f;
+	UPROPERTY(EditAnywhere, Category = Setup)
+		FVector TeleportProjectionExtent = FVector(100, 100, 100);
+	
 
 private:
 	void MoveForward(float Throttle);
 	void MoveRight(float Throttle);
+
+	void UpdateDestinationMarker();
+	void BeginTeleport();
+	void EndTeleport();
 	
 	
 };
