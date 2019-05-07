@@ -47,8 +47,10 @@ private:
 private:
 	void MoveForward(float Throttle);
 	void MoveRight(float Throttle);
-
+	
+	bool FindTeleportDestination(FVector &OutLocation);
 	void UpdateDestinationMarker();
+	void StartCameraFade(float FromAlpha, float ToAlpha);
 	void BeginTeleport();
 	void EndTeleport();
 	
