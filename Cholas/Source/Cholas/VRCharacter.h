@@ -19,7 +19,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -27,32 +27,44 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
+	//CAMERA AND VR ROOT PARAMETERS
 	UPROPERTY(VisibleAnywhere, Category = Setup)
-	class UCameraComponent* Camera;
+		class UCameraComponent* Camera;
 	UPROPERTY(VisibleAnywhere, Category = Setup)
-	class USceneComponent* VRRoot;
+		class USceneComponent* VRRoot;
 	UPROPERTY(VisibleAnywhere, Category = Setup)
-	class UStaticMeshComponent* DestinationMarker;
+		class UStaticMeshComponent* DestinationMarker;
 	UPROPERTY(EditAnywhere, Category = Setup)
-	class USkeletalMeshComponent* CharacterMesh;
+		class USkeletalMeshComponent* CharacterMesh;
 
-	UPROPERTY(EditAnywhere,Category = Setup)
-	float TeleportRange = 1000.0f;
+	//BLINKER PARAMETERS
+	UPROPERTY(VisibleAnywhere, Category = Setup)
+		class UPostProcessComponent* PostProcessComponent;
+	UPROPERTY(EditAnywhere, Category = Setup)
+		class UMaterialInterface* BlinkerBaseMaterial;
+	UPROPERTY(VisibleAnywhere, Category = Setup)
+		class UMaterialInstanceDynamic* BlinkerMaterialInstance;
+
+	//TELEPORT PARAMETERS
+	UPROPERTY(EditAnywhere, Category = Setup)
+		float TeleportRange = 1000.0f;
 	UPROPERTY(EditAnywhere, Category = Setup)
 		float TeleportFadeTime = 1.0f;
 	UPROPERTY(EditAnywhere, Category = Setup)
 		FVector TeleportProjectionExtent = FVector(100, 100, 100);
 	
+	
+
 
 private:
 	void MoveForward(float Throttle);
 	void MoveRight(float Throttle);
-	
+
 	bool FindTeleportDestination(FVector &OutLocation);
 	void UpdateDestinationMarker();
 	void StartCameraFade(float FromAlpha, float ToAlpha);
 	void BeginTeleport();
 	void EndTeleport();
-	
-	
+
+
 };

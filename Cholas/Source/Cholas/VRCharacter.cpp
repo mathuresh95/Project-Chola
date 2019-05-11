@@ -7,6 +7,8 @@
 #include"DrawDebugHelpers.h"
 #include"TimerManager.h"
 #include"AI/Navigation/NavigationSystem.h"
+#include"Components/PostProcessComponent.h"
+#include"Materials/MaterialInstanceDynamic.h"
 
 
 // Sets default values
@@ -26,6 +28,10 @@ AVRCharacter::AVRCharacter()
 	//CharacterMesh = CreateDefaultSubobject<USkeletalMeshComponent>(FName("Character Mesh"));
 	//CharacterMesh->SetupAttachment(GetRootComponent());
 
+	PostProcessComponent = CreateDefaultSubobject<UPostProcessComponent>(TEXT("Post Process Component"));
+	PostProcessComponent->SetupAttachment(GetRootComponent());
+	//PostProcessComponent->AddOrUpdateBlendable()
+
 }
 
 // Called when the game starts or when spawned
@@ -33,10 +39,12 @@ void AVRCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	DestinationMarker->SetVisibility(false);
-
-
-
-
+	if (BlinkerBaseMaterial!=nullptr)
+	{
+		BlinkerMaterialInstance = UMaterialInstanceDynamic::Create(BlinkerBaseMaterial, this);
+		PostProcessComponent->AddOrUpdateBlendable(BlinkerMaterialInstance);
+		BlinkerMaterialInstance->SetScalarParameterValue(FName("Radius"), 0.2);
+	}
 }
 
 // Called every frame
